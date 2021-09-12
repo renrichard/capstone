@@ -9,7 +9,7 @@ from json import dumps
 from re import sub
 
 from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename, data_dir
-from preprocess.json.vcc_2020_constants import vcc_2020_orig_sr, vcc_2020_target_sr
+from preprocess.json.vcc_2020_constants import vcc_2020_orig_sr, vcc_2020_target_sr, speakers
 
 
 def get_num_to_transcription():
@@ -44,31 +44,30 @@ def get_duration(data, sr):
 
 def create_vcc_2020_json():
 	num_to_transcription = get_num_to_transcription()
-	targets = sorted([d for d in listdir(task_path) if isdir(join(task_path, d)) and d != 'json'])
 
 	# create a dir for the json files
 	create_dir(data_dir)
 
-	for target in targets:
-		target_path = join(task_path, target)
+	for speaker in speakers:
+		speaker_path = join(task_path, speaker)
 
 		# create a dir for the resampled files
-		resample_dir = join(target_path, 'resample')
+		resample_dir = join(speaker_path, 'resample')
 		create_dir(resample_dir)
 
 		metadata = []
 
-		for f in sorted(listdir(target_path)):
-			if isfile(join(target_path, f)):
+		for f in sorted(listdir(speaker_path)):
+			if isfile(join(speaker_path, f)):
 
 				file_metadata = dict()
 
 				# get the file paths
-				target_file = join(target_path, f)
+				speaker_file = join(speaker_path, f)
 				resample_file = join(resample_dir, f)
 
 				# save resample data
-				resample_data = get_resample_data(target_file)
+				resample_data = get_resample_data(speaker_file)
 				write(resample_file, resample_data, vcc_2020_target_sr)
 				file_metadata['audio_filepath'] = resample_file
 
@@ -83,7 +82,7 @@ def create_vcc_2020_json():
 
 				metadata.append(file_metadata)
 
-		fp = join(data_dir, '{}_metadata.json'.format(target))
+		fp = join(data_dir, '{}_metadata.json'.format(speaker))
 		with open(fp, 'w') as f:
 			contents = dumps(metadata).strip('[]')
 			contents = sub('}, {', '}\n{', contents)
