@@ -12,6 +12,7 @@ Here is the order of operation:
 3. Calculate the duration of the audio file.
 4. Get the transcription corresponding to audio file.
 5. Write the resample path, duration, and transcription to the json.
+6. All the jsons are saved in a folder `~/data/VCC2020-database/extract/target_task1/json`
 
 Example from hi_fi_tts_v0 used in tts_finetune:
 

@@ -6,7 +6,7 @@ from soundfile import write
 
 from json import dumps
 
-from preprocess.json.vcc_2020_paths import targets_path, train_transcription_filename
+from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename
 from preprocess.json.vcc_2020_constants import vcc_2020_orig_sr, vcc_2020_target_sr
 
 
@@ -24,6 +24,12 @@ def get_num_to_transcription():
 	return num_to_transcription
 
 
+def create_dir(new_dir_path):
+	if not exists(new_dir_path):
+		makedirs(new_dir_path)
+
+
+
 def get_resample_data(target_file):
 	target_data, _ = load(target_file, vcc_2020_orig_sr)
 	resample_data = resample(target_data, vcc_2020_orig_sr, vcc_2020_target_sr)
@@ -36,25 +42,29 @@ def get_duration(data, sr):
 
 def main():
 	num_to_transcription = get_num_to_transcription()
-	targets = sorted([join(targets_path, d) for d in listdir(targets_path) if isdir(join(targets_path, d))])
+	targets = sorted([d for d in listdir(task_path) if isdir(join(task_path, d)) and d != 'json'])
+
+	# create a dir for the json files
+	json_dir = join(task_path, 'json')
+	create_dir(json_dir)
 
 	for target in targets:
+		target_path = join(task_path, target)
 
 		# create a dir for the resampled files
-		resample_dir = join(target, 'resample')
-		if not exists(resample_dir):
-			makedirs(resample_dir)
+		resample_dir = join(target_path, 'resample')
+		create_dir(resample_dir)
 
 		metadata = []
 
-		for f in sorted(listdir(target)):
-			if isfile(join(target, f)):
+		for f in sorted(listdir(target_path)):
+			if isfile(join(target_path, f)):
 
 				file_metadata = dict()
 
 				# get the file paths
-				target_file = join(target, f)
-				resample_file = join(target, 'resample', f)
+				target_file = join(target_path, f)
+				resample_file = join(resample_dir, f)
 
 				# save resample data
 				resample_data = get_resample_data(target_file)
@@ -72,11 +82,9 @@ def main():
 
 				metadata.append(file_metadata)
 
-
-		fp = join(target, 'resample/metadata.json')
+		fp = join(json_dir, '{}_metadata.json'.format(target))
 		with open(fp, 'w') as f:
 				f.write(dumps(metadata).strip('[]') + "\n")
-		return
 
 
 if __name__ == '__main__':
