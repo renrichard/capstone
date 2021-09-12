@@ -87,7 +87,7 @@ def create_vcc_2020_json():
 		fp = join(json_dir, '{}_metadata.json'.format(target))
 		with open(fp, 'w') as f:
 			contents = dumps(metadata).strip('[]')
-			contents = sub('}, {', '}, \n{', contents)
+			contents = sub('}, {', '}\n{', contents)
 			f.write(contents)
 
 
