@@ -1,19 +1,20 @@
-from os import listdir, makedirs
-from os.path import isdir, isfile, join, exists
+import os
+import os.path as path
 
-from librosa.core import load, resample
-from soundfile import write
+import librosa.core as lr
 
-from json import dumps
+import soundfile as sf
 
-from re import sub
+import json
 
-from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename, data_dir
-from preprocess.json.vcc_2020_constants import vcc_2020_orig_sr, vcc_2020_target_sr
+import re
+
+import preprocess.json.vcc_2020_paths as vpaths
+import preprocess.json.vcc_2020_constants as cnst
 
 
 def get_num_to_transcription():
-	with open(train_transcription_filename) as f:
+	with open(vpaths.train_transcription_filename) as f:
 		transcriptions = f.readlines()
 
 	num_to_transcription = dict()
@@ -27,14 +28,13 @@ def get_num_to_transcription():
 
 
 def create_dir(new_dir_path):
-	if not exists(new_dir_path):
-		makedirs(new_dir_path)
-
+	if not path.exists(new_dir_path):
+		os.makedirs(new_dir_path)
 
 
 def get_resample_data(target_file):
-	target_data, _ = load(target_file, vcc_2020_orig_sr)
-	resample_data = resample(target_data, vcc_2020_orig_sr, vcc_2020_target_sr)
+	target_data, _ = lr.load(target_file, cnst.orig_sr)
+	resample_data = lr.resample(target_data, cnst.orig_sr, cnst.target_sr)
 	return resample_data
 
 
@@ -44,36 +44,34 @@ def get_duration(data, sr):
 
 def create_vcc_2020_json():
 	num_to_transcription = get_num_to_transcription()
-	targets = sorted([d for d in listdir(task_path) if isdir(join(task_path, d)) and d != 'json'])
 
 	# create a dir for the json files
-	create_dir(data_dir)
+	create_dir(vpaths.data_dir)
 
-	for target in targets:
-		target_path = join(task_path, target)
+	for speaker in cnst.speakers:
+		target_path = path.join(vpaths.task_path, speaker)
 
 		# create a dir for the resampled files
-		resample_dir = join(target_path, 'resample')
+		resample_dir = path.join(target_path, 'resample')
 		create_dir(resample_dir)
 
 		metadata = []
 
-		for f in sorted(listdir(target_path)):
-			if isfile(join(target_path, f)):
-
+		for f in sorted(os.listdir(target_path)):
+			if path.isfile(path.join(target_path, f)):
 				file_metadata = dict()
 
 				# get the file paths
-				target_file = join(target_path, f)
-				resample_file = join(resample_dir, f)
+				target_file = path.join(target_path, f)
+				resample_file = path.join(resample_dir, f)
 
 				# save resample data
 				resample_data = get_resample_data(target_file)
-				write(resample_file, resample_data, vcc_2020_target_sr)
+				sf.write(resample_file, resample_data, cnst.target_sr)
 				file_metadata['audio_filepath'] = resample_file
 
 				# find duration
-				duration = get_duration(resample_data, vcc_2020_target_sr)
+				duration = get_duration(resample_data, cnst.target_sr)
 				file_metadata['duration'] = duration
 
 				# get transcription of the file
@@ -83,10 +81,10 @@ def create_vcc_2020_json():
 
 				metadata.append(file_metadata)
 
-		fp = join(data_dir, '{}_metadata.json'.format(target))
+		fp = path.join(vpaths.data_dir, '{}_metadata.json'.format(speaker))
 		with open(fp, 'w') as f:
-			contents = dumps(metadata).strip('[]')
-			contents = sub('}, {', '}\n{', contents)
+			contents = json.dumps(metadata).strip('[]')
+			contents = re.sub('}, {', '}\n{', contents)
 			f.write(contents)
 
 
