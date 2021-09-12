@@ -6,6 +6,8 @@ from soundfile import write
 
 from json import dumps
 
+from re import sub
+
 from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename
 from preprocess.json.vcc_2020_constants import vcc_2020_orig_sr, vcc_2020_target_sr
 
@@ -84,7 +86,9 @@ def main():
 
 		fp = join(json_dir, '{}_metadata.json'.format(target))
 		with open(fp, 'w') as f:
-				f.write(dumps(metadata).strip('[]') + "\n")
+			contents = dumps(metadata).strip('[]')
+			contents = sub('}, {', '}, \n{', contents)
+			f.write(contents)
 
 
 if __name__ == '__main__':
