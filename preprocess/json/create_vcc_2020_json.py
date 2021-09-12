@@ -42,7 +42,7 @@ def get_duration(data, sr):
 	return len(data) / sr
 
 
-def main():
+def create_vcc_2020_json():
 	num_to_transcription = get_num_to_transcription()
 	targets = sorted([d for d in listdir(task_path) if isdir(join(task_path, d)) and d != 'json'])
 
@@ -92,4 +92,4 @@ def main():
 
 
 if __name__ == '__main__':
-	main()
+	create_vcc_2020_json()
