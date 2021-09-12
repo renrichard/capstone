@@ -8,7 +8,7 @@ from json import dumps
 
 from re import sub
 
-from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename
+from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename, data_dir
 from preprocess.json.vcc_2020_constants import vcc_2020_orig_sr, vcc_2020_target_sr
 
 
@@ -47,8 +47,7 @@ def create_vcc_2020_json():
 	targets = sorted([d for d in listdir(task_path) if isdir(join(task_path, d)) and d != 'json'])
 
 	# create a dir for the json files
-	json_dir = join(task_path, 'json')
-	create_dir(json_dir)
+	create_dir(data_dir)
 
 	for target in targets:
 		target_path = join(task_path, target)
@@ -84,7 +83,7 @@ def create_vcc_2020_json():
 
 				metadata.append(file_metadata)
 
-		fp = join(json_dir, '{}_metadata.json'.format(target))
+		fp = join(data_dir, '{}_metadata.json'.format(target))
 		with open(fp, 'w') as f:
 			contents = dumps(metadata).strip('[]')
 			contents = sub('}, {', '}\n{', contents)
