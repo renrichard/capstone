@@ -1,15 +1,13 @@
+from json import dumps
 from os import listdir, makedirs
-from os.path import isdir, isfile, join, exists
+from os.path import isfile, join, exists
+from re import sub
 
 from librosa.core import load, resample
 from soundfile import write
 
-from json import dumps
-
-from re import sub
-
-from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename, data_dir
 from preprocess.json.vcc_2020_constants import vcc_2020_orig_sr, vcc_2020_target_sr, speakers
+from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename, data_dir
 
 
 def get_num_to_transcription():

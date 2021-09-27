@@ -14,3 +14,4 @@ task_path = home + '/data/VCC2020-database/extract/target_task1'
 data_dir = home + '/data/VCC2020-database/extract/target_task1/json'
 filelist_dir = home + '/data/VCC2020-database/extract/target_task1/filelist'
 exp_base_dir = home + '/data/VCC2020-database/extract/target_task1/exp_base'
+synth_dir = task_path
