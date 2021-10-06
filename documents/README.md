@@ -1,7 +1,7 @@
 # Useful links to documents
 
 ## Models
-| Name | Git |
+| Paper | GitHub Link |
 | --- | --- |
 | [NeMo](https://arxiv.org/abs/1909.09577) | https://github.com/NVIDIA/NeMo |
 | [Variational Inference with adversarial learning (VITS)](https://arxiv.org/abs/2106.06103) | https://github.com/jaywalnut310/vits |
@@ -16,7 +16,7 @@
 ### General
 - [Voice Conversion Problem Overview](https://arxiv.org/abs/2008.03648)
 - [Alignment In NLP](https://cse.hkust.edu.hk/~dekai/library/WU_Dekai/Wu_Alignment2010.pdf)
-- [Facebook NLP](https://ai.facebook.com/blog/textless-nlp-generating-expressive-speech-from-raw-audio/)
+- [Facebook NLP Blog](https://ai.facebook.com/blog/textless-nlp-generating-expressive-speech-from-raw-audio/)
 
 ### Latent Spaces
 - [Simple Introduction to Variational Autoencoders (VAE)](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73)
