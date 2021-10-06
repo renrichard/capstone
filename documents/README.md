@@ -1,13 +1,15 @@
 # Useful links to documents
 
 ## Models
+| Name | Git |
+| --- | --- |
+| [NeMo](https://arxiv.org/abs/1909.09577) | https://github.com/NVIDIA/NeMo |
+| [Variational Inference with adversarial learning (VITS)](https://arxiv.org/abs/2106.06103) | https://github.com/jaywalnut310/vits |
+| [Generative Spoken Language Modeling (GSLM)](https://arxiv.org/abs/2102.01192?fbclid=IwAR0_tSl4Y3XkQJO33DkoXdS8xyaFK5DpPwzLst8aHbuy2bhnEThnINlNHes) | https://github.com/pytorch/fairseq/tree/main/examples/textless_nlp/gslm |
+| [Flowtron](https://arxiv.org/abs/2005.05957) | https://github.com/NVIDIA/flowtron |
+| [VCC2020 Baseline](https://arxiv.org/abs/2010.02434) | https://github.com/espnet/espnet/tree/master/egs/vcc20 |
+| [VQ-VAE](https://arxiv.org/abs/1711.00937) | https://github.com/MishaLaskin/vqvae |
 
-- [NeMo](https://github.com/NVIDIA/NeMo)
-- [Variational Inference with adversarial learning (VITS)](https://arxiv.org/abs/2106.06103)
-- [Generative Spoken Language Modeling (GSLM)](https://arxiv.org/abs/2102.01192?fbclid=IwAR0_tSl4Y3XkQJO33DkoXdS8xyaFK5DpPwzLst8aHbuy2bhnEThnINlNHes)
-- [Flowtron](https://arxiv.org/abs/2005.05957)
-- [VCC2020 Baseline](https://arxiv.org/abs/2010.02434)
-- [VQ-VAE](https://arxiv.org/abs/2005.09409)
 
 ## Background information
 
@@ -20,6 +22,7 @@
 - [First VAE Paper](https://arxiv.org/pdf/1812.04342.pdf)
 - [Interpretation of Speech Synthesis Latent Spaces](https://arxiv.org/abs/1903.11570)
 - [Variational Inference with Normalizing Flow](https://arxiv.org/abs/1505.05770)
+- [Acoustic Unit Discovery with VQ-VAE](https://arxiv.org/abs/2005.09409)
 
 ## Datasets
 
