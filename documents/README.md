@@ -9,6 +9,7 @@
 | [Flowtron](https://arxiv.org/abs/2005.05957) | https://github.com/NVIDIA/flowtron |
 | [VCC2020 Baseline](https://arxiv.org/abs/2010.02434) | https://github.com/espnet/espnet/tree/master/egs/vcc20 |
 | [VQ-VAE](https://arxiv.org/abs/1711.00937) | https://github.com/MishaLaskin/vqvae |
+| [WaveGlow](https://arxiv.org/abs/1811.00002) | https://github.com/NVIDIA/waveglow |
 
 
 ## Background information
@@ -22,8 +23,12 @@
 - [Simple Introduction to Variational Autoencoders (VAE)](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73)
 - [First VAE Paper](https://arxiv.org/pdf/1812.04342.pdf)
 - [Interpretation of Speech Synthesis Latent Spaces](https://arxiv.org/abs/1903.11570)
-- [Variational Inference with Normalizing Flow](https://arxiv.org/abs/1505.05770)
 - [Acoustic Unit Discovery with VQ-VAE](https://arxiv.org/abs/2005.09409)
+
+### Normalizing Flow
+- [WaveGlow Summary](https://pytorch.org/hub/nvidia_deeplearningexamples_waveglow/)
+- [Variational Inference with Normalizing Flow](https://arxiv.org/abs/1505.05770)
+
 
 ## Datasets
 
