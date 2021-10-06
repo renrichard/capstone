@@ -16,6 +16,7 @@
 ### General
 - [Voice Conversion Problem Overview](https://arxiv.org/abs/2008.03648)
 - [Alignment In NLP](https://cse.hkust.edu.hk/~dekai/library/WU_Dekai/Wu_Alignment2010.pdf)
+- [Facebook NLP](https://ai.facebook.com/blog/textless-nlp-generating-expressive-speech-from-raw-audio/)
 
 ### Latent Spaces
 - [Simple Introduction to Variational Autoencoders (VAE)](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73)
