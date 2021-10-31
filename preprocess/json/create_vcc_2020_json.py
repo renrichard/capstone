@@ -7,11 +7,12 @@ from librosa.core import load, resample
 from soundfile import write
 
 from preprocess.json.vcc_2020_constants import vcc_2020_orig_sr, vcc_2020_target_sr, speakers
-from preprocess.json.vcc_2020_paths import task_path, train_transcription_filename, data_dir
+from preprocess.json.vcc_2020_paths import task_json_dir, groundtruth_path, \
+	groundtruth_json_dir, eval_transcription_filename
 
 
-def get_num_to_transcription():
-	with open(train_transcription_filename) as f:
+def get_num_to_transcription(transcription_filename):
+	with open(transcription_filename) as f:
 		transcriptions = f.readlines()
 
 	num_to_transcription = dict()
@@ -40,14 +41,14 @@ def get_duration(data, sr):
 	return len(data) / sr
 
 
-def create_vcc_2020_json():
-	num_to_transcription = get_num_to_transcription()
+def create_vcc_2020_json(transcription_filepath, data_dir, json_dir):
+	num_to_transcription = get_num_to_transcription(transcription_filepath)
 
 	# create a dir for the json files
-	create_dir(data_dir)
+	create_dir(json_dir)
 
 	for speaker in speakers:
-		speaker_path = join(task_path, speaker)
+		speaker_path = join(data_dir, speaker)
 
 		# create a dir for the resampled files
 		resample_dir = join(speaker_path, 'resample')
@@ -80,7 +81,7 @@ def create_vcc_2020_json():
 
 				metadata.append(file_metadata)
 
-		fp = join(data_dir, '{}_metadata.json'.format(speaker))
+		fp = join(json_dir, '{}_metadata.json'.format(speaker))
 		with open(fp, 'w') as f:
 			contents = dumps(metadata).strip('[]')
 			contents = sub('}, {', '}\n{', contents)
@@ -88,4 +89,7 @@ def create_vcc_2020_json():
 
 
 if __name__ == '__main__':
-	create_vcc_2020_json()
+	data = 'groundtruth'
+
+	if data == 'groundtruth':
+		create_vcc_2020_json(eval_transcription_filename, groundtruth_path, groundtruth_json_dir)
