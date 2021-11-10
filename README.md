@@ -4,8 +4,13 @@
 - [Pytorch Lightning](https://github.com/jasonjjl1999/capstone-vits)
 - [Porting to NeMo](https://github.com/martynwei/Capstone-NeMo)
 
-## Trained Checkpoints
-- [LJSpeech + VCC2020 Target Speakers for VITS](https://drive.google.com/file/d/1gy5SJ_lPMrorWdneMr8_O7NQP7mZ0CkT/view?usp=sharing)
+## Trained VITS Checkpoints
+- [LJSpeech](https://drive.google.com/file/d/1gy5SJ_lPMrorWdneMr8_O7NQP7mZ0CkT/view?usp=sharing)
+- [TEF1](https://drive.google.com/file/d/1WrO5has-siqI-wnCv5JJzOcN-tYsqNA4/view?usp=sharing)
+- [TEF2](https://drive.google.com/file/d/1ND7kIXYJIvxZ66Pez_aoShHo-3ReJ-AI/view?usp=sharing)
+- [TEM1](https://drive.google.com/file/d/1cBJstoA86m8OxjewPCxcGTaJGg0-crYw/view?usp=sharing)
+- [TEM2](https://drive.google.com/file/d/1SpL21JxQwSWyXjsopq75L07N3TbgfWdd/view?usp=sharing)
+
 
 ## Models
 | Paper | GitHub Link |
