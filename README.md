@@ -1,4 +1,11 @@
-# Useful links to documents
+# Important Links
+
+## Repos
+- [Pytorch Lightning](https://github.com/jasonjjl1999/capstone-vits)
+- [Porting to NeMo](https://github.com/martynwei/Capstone-NeMo)
+
+## Trained Checkpoints
+- [LJSpeech + VCC2020 Target Speakers for VITS](https://drive.google.com/file/d/1gy5SJ_lPMrorWdneMr8_O7NQP7mZ0CkT/view?usp=sharing)
 
 ## Models
 | Paper | GitHub Link |
