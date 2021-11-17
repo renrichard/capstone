@@ -1,0 +1,1 @@
+python vits.py train_dataset=data/speech/LJSpeech/ljspeech_train.json validation_datasets=data/speech/LJSpeech/ljspeech_val.json sample_rate=22050
