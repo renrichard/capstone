@@ -11,6 +11,10 @@
 - [TEM1](https://drive.google.com/file/d/1cBJstoA86m8OxjewPCxcGTaJGg0-crYw/view?usp=sharing)
 - [TEM2](https://drive.google.com/file/d/1SpL21JxQwSWyXjsopq75L07N3TbgfWdd/view?usp=sharing)
 
+## Inference Samples on Test Data
+- [VITS](https://drive.google.com/drive/folders/172Ozoj7z-_bBtZYOxTWrQeIe0pL9P79K?usp=sharing)
+- [Fastpitch (Baseline)](https://drive.google.com/drive/u/0/folders/1RrnRzpbs3iLEFxgZMQPSF6eeASg_I5B4)
+- [Ground Truth](https://drive.google.com/drive/folders/1oTwy7JVCVxNyD0wZIXrbjxobWPltf8Km?usp=sharing)
 
 ## Models
 | Paper | GitHub Link |
