@@ -1,3 +1,37 @@
+# How to Train VITS on LJSpeech using NeMo
+
+1. Clone the new forked NeMo repo.
+
+    `git clone https://github.com/jasonjjl1999/NeMo.git`
+
+2. Once you are in the repo, make sure that you are on the `vits` branch (Note: must do this before step 4).
+
+    `git switch vits`
+
+3. Install Cython module in Python environment.
+
+    `pip install cython`
+
+4. Install NeMo dependencies (run this in root dir of NeMo).
+
+    `./reinstall`
+
+5. Setup LJSpeech dataset. Copy data folder (from this repo) to root, such that these files exist in your filesystem:
+
+    `/data/speech/LJSpeech/ljspeech_train.json`
+
+    `/data/speech/LJSpeech/ljspeech_val.json`
+
+    `/data/speech/LJSpeech/ljspeech_test.json`
+
+6. Download the LJSpeech dataset. Copy all `*.wav` files from the LJSpeech dataset to the following location:
+
+    `/data/speech/LJSpeech/wavs`
+
+7. Navigate back to NeMo root directory and run this command:
+
+    `python vits.py train_dataset=/data/speech/LJSpeech/ljspeech_train.json validation_datasets=/data/speech/LJSpeech/ljspeech_val.json sample_rate=22050`
+
 # Important Links
 
 ## Repos
